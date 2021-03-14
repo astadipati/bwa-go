@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"bwastartup/helper"
 	"bwastartup/user"
 	"net/http"
 
@@ -27,9 +28,13 @@ func (h *userHandler) RegisterUser(c *gin.Context) {
 	if err != nil {
 		c.JSON(http.StatusBadRequest, nil)
 	}
-	user, err := h.userService.RegisterUser(input)
+	newUser, err := h.userService.RegisterUser(input)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, nil)
 	}
-	c.JSON(http.StatusOK, user)
+	// panggil formatter
+	formatter := user.FotmatUser(newUser, "initokenrahasia")
+	// panggil helper untuk response
+	response := helper.APIResponse("Account has been created", http.StatusOK, "success", formatter)
+	c.JSON(http.StatusOK, response)
 }
