@@ -1,1 +1,36 @@
 package user
+
+import "golang.org/x/crypto/bcrypt"
+
+type Service interface {
+	// method register user, mwakili bisnis logic
+	RegisterUser(input RegisteruserInput) (User, error)
+}
+
+type service struct {
+	// akan mapping struct input ke struck User
+	repository Repository //ambil interface repository
+}
+
+func NewService(repository Repository) *service {
+	return &service{repository}
+}
+
+func (s *service) RegisterUser(input RegisteruserInput) (User, error) {
+	user := User{}
+	user.Name = input.Name
+	user.Email = input.Email
+	user.Occupation = input.Occupation
+	passwordHash, err := bcrypt.GenerateFromPassword([]byte(input.Password), bcrypt.MinCost)
+	if err != nil {
+		return user, err
+	}
+	user.PasswordHash = string(passwordHash)
+	user.Role = "user"
+
+	newUser, err := s.repository.Save(user)
+	if err != nil {
+		return newUser, err
+	}
+	return newUser, nil
+}

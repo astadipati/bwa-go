@@ -18,12 +18,15 @@ func main() {
 
 	//kita panggil repo
 	userRepository := user.NewRepository(db)
-	user := user.User{
-		Name: "Test simpan",
-	}
-	// test simpan dari repo
-	userRepository.Save(user)
+	userService := user.NewService(userRepository)
 
+	userInput := user.RegisteruserInput{}
+	userInput.Name = "name dari service"
+	userInput.Email = "service@gmail.com"
+	userInput.Occupation = "Anak band"
+	userInput.Password = "password"
+
+	userService.RegisterUser(userInput)
 }
 
 // func handler(c *gin.Context) {
