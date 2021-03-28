@@ -48,3 +48,12 @@ func (h *userHandler) RegisterUser(c *gin.Context) {
 	response := helper.APIResponse("Account has been created", http.StatusOK, "success", formatter)
 	c.JSON(http.StatusOK, response)
 }
+
+func (h *userHandler) Login(c *gin.Context) {
+	// user memasukkan input (email & password)
+	// input ditangkap handler
+	// mapping dari iput user ke iput struct
+	// input struct passing service
+	// di service mencari dengan bantuan repository user dengan email x
+	// mencocokkan password
+}
