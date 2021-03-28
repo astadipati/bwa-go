@@ -23,16 +23,28 @@ func main() {
 	userRepository := user.NewRepository(db)
 	userService := user.NewService(userRepository)
 
-	userByEmail, err := userRepository.FindByEmail("pamman@mail.com")
+	input := user.LoginInput{
+		Email:    "paman@mail.com",
+		Password: "pavssword",
+	}
+	user, err := userService.Login(input)
 	if err != nil {
+		fmt.Println("Terjadi kesalahan")
 		fmt.Println(err.Error())
 	}
+	fmt.Println(user.Email)
+	fmt.Println(user.Name)
 
-	if userByEmail.ID == 0 {
-		fmt.Println("User tidak ditemukan")
-	} else {
-		fmt.Println(userByEmail.Name)
-	}
+	// userByEmail, err := userRepository.FindByEmail("pamman@mail.com")
+	// if err != nil {
+	// 	fmt.Println(err.Error())
+	// }
+
+	// if userByEmail.ID == 0 {
+	// 	fmt.Println("User tidak ditemukan")
+	// } else {
+	// 	fmt.Println(userByEmail.Name)
+	// }
 
 	// userInput := user.RegisteruserInput{}
 	// userInput.Name = "name dari service"
