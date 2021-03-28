@@ -1,0 +1,9 @@
+id,name,occupation,email,password_hash,avatar_file_name,role,token,created_at,updated_at
+1,nama,ademin,email@email.com,$2a$04$7oL5j9LEb17kWef4RrHCOexzxg6hWo1mb690qq4lsdquUKYhVFYSK,,user,,"2021-03-28 08:59:41","2021-03-28 08:59:41"
+2,nama,ademin,email@email.com,$2a$04$AJBunP0lZ7NqcRK8UtY0mu70I8rGWF1WtsCUVVAmYx2RvOan2nuQO,,user,,"2021-03-28 11:17:41","2021-03-28 11:17:41"
+3,nama,,email,$2a$04$p.U.WUNYb.RojawVFoS1Zee69KmwaPinUMZ6i3ZgCw8oAV9kTxlDK,,user,,"2021-03-28 11:18:05","2021-03-28 11:18:05"
+4,nama,,email,$2a$04$6EPHJ1zUM1VNo2mvfvW1LuepdtWYRJQ4rMWmsPOhXaaMNm4vMwaMu,,user,,"2021-03-28 11:18:22","2021-03-28 11:18:22"
+5,nama,,email,$2a$04$CXJHdLz9yYKG3Q2LBOmcHeyqL0mLc0tkYBFpqsHjgkbRf8mxWORzC,,user,,"2021-03-28 11:23:41","2021-03-28 11:23:41"
+6,aman,gm,email@mail.com,$2a$04$GeD1.LRQx0etYXTyWrRzReXnERdtlfySUQO5dpR9trtOBu8sS7osG,,user,,"2021-03-28 11:47:52","2021-03-28 11:47:52"
+7,paman,cto,paman@mail.com,$2a$04$NMFB.YWeU5yCKwx84AWjOefOleRAKQbFBWTh3loHT0ABC2e4hVXcq,,user,,"2021-03-28 12:18:55","2021-03-28 12:18:55"
+8,rengo,cto,rengo@mail.com,$2a$04$wTzbKmS09BPTcEf94wT9kuXCIxs0YWHCRyfOHeP3.b/6sf/VPxFCq,,user,,"2021-03-28 17:47:49","2021-03-28 17:47:49"
