@@ -25,12 +25,22 @@ func (h *userHandler) RegisterUser(c *gin.Context) {
 	var input user.RegisteruserInput
 
 	err := c.ShouldBindJSON(&input)
+
 	if err != nil {
-		c.JSON(http.StatusBadRequest, nil)
+
+		errors := helper.FormatValidationError(err)
+		errorMessage := gin.H{"errors": errors}
+
+		response := helper.APIResponse("Register User Failed", http.StatusUnprocessableEntity, "error", errorMessage)
+		c.JSON(http.StatusUnprocessableEntity, response)
+		return
 	}
 	newUser, err := h.userService.RegisterUser(input)
+
 	if err != nil {
-		c.JSON(http.StatusBadRequest, nil)
+		response := helper.APIResponse("Register Failed", http.StatusOK, "error", nil)
+		c.JSON(http.StatusBadRequest, response)
+		return
 	}
 	// panggil formatter
 	formatter := user.FotmatUser(newUser, "initokenrahasia")
