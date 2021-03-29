@@ -12,6 +12,9 @@ type Service interface {
 
 	// method untuk login setelah itu kita akses dengan func
 	Login(input LoginInput) (User, error)
+
+	// untuk cek email available
+	IsEmailAvailable(input CheckEmailInput) (bool, error)
 }
 
 type service struct {
@@ -63,4 +66,19 @@ func (s *service) Login(input LoginInput) (User, error) {
 	}
 	return user, nil
 
+}
+
+func (s *service) IsEmailAvailable(input CheckEmailInput) (bool, error) {
+	email := input.Email
+
+	user, err := s.repository.FindByEmail(email)
+	if err != nil {
+		return false, err
+	}
+
+	if user.ID == 0 {
+		return true, nil
+	}
+
+	return true, nil
 }
